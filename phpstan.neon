@@ -1,5 +1,6 @@
 includes:
     - vendor/larastan/larastan/extension.neon
+    - vendor/pestphp/pest/extension.neon
 
 parameters:
     level: 9
@@ -8,3 +9,5 @@ parameters:
         - config
         - database
         - tests
+    stubFiles:
+        - phpstan/pest-stubs.stub

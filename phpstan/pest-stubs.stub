@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * PHPStan stubs that bind `$this` inside Pest test closures to this package's
+ * TestCase. Without these, PHPStan resolves `$this` to Pest's internal
+ * TestCall (PHPUnit base) and reports framework helpers such as postJson(),
+ * actingAs() and dynamically-set properties as undefined.
+ *
+ * Every test file in tests/ is bound to this TestCase via uses() in tests/Pest.php.
+ *
+ * Notes on the shapes below:
+ * - The `it()/test()/beforeEach()` return types are intentionally `mixed`.
+ *   PHPStan validates stub function declarations against a restricted symbol
+ *   table that only resolves PHP built-in classes and classes declared inside
+ *   stub files (never analysed-path or vendor classes), so referencing Pest's
+ *   concrete fluent return classes here would raise non-ignorable
+ *   `class.notFound` errors. The test suite only needs the
+ *   `@param-closure-this` binding, not the chain return types.
+ * - `TestCase` is re-declared here (an empty class shell) purely so the
+ *   `@param-closure-this` references resolve during stub validation — the
+ *   restricted stub symbol table cannot otherwise see the analysed-path class.
+ *   PHPStan merges this shell with the real tests/TestCase.php, so the Testbench
+ *   base plus the project's own helpers (makeType(), artisanCommand(),
+ *   $renderer, ...) all remain fully visible inside test closures.
+ */
+
+namespace {
+    /**
+     * @param-closure-this \Xjoc\NotificationCenter\Tests\TestCase $closure
+     */
+    function beforeEach(?\Closure $closure = null): mixed
+    {
+    }
+
+    /**
+     * @param-closure-this \Xjoc\NotificationCenter\Tests\TestCase $closure
+     */
+    function test(?string $description = null, ?\Closure $closure = null): mixed
+    {
+    }
+
+    /**
+     * @param-closure-this \Xjoc\NotificationCenter\Tests\TestCase $closure
+     */
+    function it(string $description, ?\Closure $closure = null): mixed
+    {
+    }
+}
+
+namespace Xjoc\NotificationCenter\Tests {
+    abstract class TestCase
+    {
+    }
+}
