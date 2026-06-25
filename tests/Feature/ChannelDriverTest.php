@@ -3,11 +3,11 @@
 declare(strict_types=1);
 
 use Illuminate\Notifications\Messages\MailMessage;
-use Xjoc\NotificationCenter\Channels\DatabaseChannel;
-use Xjoc\NotificationCenter\Channels\MailChannel;
-use Xjoc\NotificationCenter\Channels\WhatsappChannel;
-use Xjoc\NotificationCenter\Templates\ChannelTemplate;
-use Xjoc\NotificationCenter\Tests\Fixtures\User;
+use XJOC\NotificationCenter\Channels\DatabaseChannel;
+use XJOC\NotificationCenter\Channels\MailChannel;
+use XJOC\NotificationCenter\Channels\WhatsappChannel;
+use XJOC\NotificationCenter\Templates\ChannelTemplate;
+use XJOC\NotificationCenter\Tests\Fixtures\User;
 
 it('mail driver renders the subject raw and the body HTML-escaped into a MailMessage', function (): void {
     $message = app(MailChannel::class)->render(

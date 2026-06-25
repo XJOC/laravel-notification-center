@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Listeners;
+namespace XJOC\NotificationCenter\Listeners;
 
-use Xjoc\NotificationCenter\Contracts\ProvidesNotificationContext;
-use Xjoc\NotificationCenter\NotificationCenterManager;
-use Xjoc\NotificationCenter\Support\NotificationCenterCache;
+use XJOC\NotificationCenter\Contracts\ProvidesNotificationContext;
+use XJOC\NotificationCenter\NotificationCenterManager;
+use XJOC\NotificationCenter\Support\NotificationCenterCache;
 
 final class EventBindingListener
 {

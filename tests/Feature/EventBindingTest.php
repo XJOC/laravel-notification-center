@@ -3,15 +3,15 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Event;
-use Xjoc\NotificationCenter\Contracts\ProvidesNotificationContext;
-use Xjoc\NotificationCenter\Listeners\EventBindingListener;
-use Xjoc\NotificationCenter\Models\NotificationEventBinding;
-use Xjoc\NotificationCenter\Models\NotificationSetting;
-use Xjoc\NotificationCenter\Models\NotificationTemplate;
-use Xjoc\NotificationCenter\Models\NotificationType;
-use Xjoc\NotificationCenter\Support\NotificationCenterCache;
-use Xjoc\NotificationCenter\Tests\Fixtures\NotificationSpy;
-use Xjoc\NotificationCenter\Tests\Fixtures\User;
+use XJOC\NotificationCenter\Contracts\ProvidesNotificationContext;
+use XJOC\NotificationCenter\Listeners\EventBindingListener;
+use XJOC\NotificationCenter\Models\NotificationEventBinding;
+use XJOC\NotificationCenter\Models\NotificationSetting;
+use XJOC\NotificationCenter\Models\NotificationTemplate;
+use XJOC\NotificationCenter\Models\NotificationType;
+use XJOC\NotificationCenter\Support\NotificationCenterCache;
+use XJOC\NotificationCenter\Tests\Fixtures\NotificationSpy;
+use XJOC\NotificationCenter\Tests\Fixtures\User;
 
 /**
  * Event that carries notification context (recipients + variables).

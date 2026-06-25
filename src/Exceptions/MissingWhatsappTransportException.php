@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Exceptions;
+namespace XJOC\NotificationCenter\Exceptions;
 
 use RuntimeException;
-use Xjoc\NotificationCenter\Contracts\WhatsappTransport;
+use XJOC\NotificationCenter\Contracts\WhatsappTransport;
 
 final class MissingWhatsappTransportException extends RuntimeException
 {

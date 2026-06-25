@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Commands;
+namespace XJOC\NotificationCenter\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
-use Xjoc\NotificationCenter\Enums\CreatedBy;
-use Xjoc\NotificationCenter\Models\NotificationSetting;
-use Xjoc\NotificationCenter\Models\NotificationType;
-use Xjoc\NotificationCenter\Support\NotificationCenterCache;
+use XJOC\NotificationCenter\Enums\CreatedBy;
+use XJOC\NotificationCenter\Models\NotificationSetting;
+use XJOC\NotificationCenter\Models\NotificationType;
+use XJOC\NotificationCenter\Support\NotificationCenterCache;
 
 final class SyncCommand extends Command
 {

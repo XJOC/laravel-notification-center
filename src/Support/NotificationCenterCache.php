@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Support;
+namespace XJOC\NotificationCenter\Support;
 
 use Illuminate\Contracts\Cache\Factory as CacheFactory;
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
-use Xjoc\NotificationCenter\Channels\ChannelRegistry;
-use Xjoc\NotificationCenter\Models\NotificationEventBinding;
-use Xjoc\NotificationCenter\Models\NotificationSetting;
-use Xjoc\NotificationCenter\Models\NotificationTemplate;
-use Xjoc\NotificationCenter\Models\NotificationType;
+use XJOC\NotificationCenter\Channels\ChannelRegistry;
+use XJOC\NotificationCenter\Models\NotificationEventBinding;
+use XJOC\NotificationCenter\Models\NotificationSetting;
+use XJOC\NotificationCenter\Models\NotificationTemplate;
+use XJOC\NotificationCenter\Models\NotificationType;
 
 final class NotificationCenterCache
 {

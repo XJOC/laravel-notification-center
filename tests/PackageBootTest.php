@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Xjoc\NotificationCenter\NotificationCenterServiceProvider;
+use XJOC\NotificationCenter\NotificationCenterServiceProvider;
 
 it('boots the application with the package registered', function (): void {
     expect(app()->getProvider(NotificationCenterServiceProvider::class))

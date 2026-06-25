@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Support;
+namespace XJOC\NotificationCenter\Support;
 
 use Illuminate\Contracts\Cache\Factory as CacheFactory;
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
-use Xjoc\NotificationCenter\Models\NotificationUserPreference;
+use XJOC\NotificationCenter\Models\NotificationUserPreference;
 
 final class PreferenceResolver
 {

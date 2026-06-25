@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Notifications;
+namespace XJOC\NotificationCenter\Notifications;
 
 use Illuminate\Notifications\Notification;
-use Xjoc\NotificationCenter\Concerns\HasNotificationCenter;
-use Xjoc\NotificationCenter\Contracts\NotifiableNotification;
-use Xjoc\NotificationCenter\Support\NotificationCenterCache;
+use XJOC\NotificationCenter\Concerns\HasNotificationCenter;
+use XJOC\NotificationCenter\Contracts\NotifiableNotification;
+use XJOC\NotificationCenter\Support\NotificationCenterCache;
 
 final class GenericNotification extends Notification implements NotifiableNotification
 {

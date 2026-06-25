@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Tests\Fixtures;
+namespace XJOC\NotificationCenter\Tests\Fixtures;
 
-use Xjoc\NotificationCenter\Contracts\NotificationChannel;
-use Xjoc\NotificationCenter\Templates\ChannelTemplate;
+use XJOC\NotificationCenter\Contracts\NotificationChannel;
+use XJOC\NotificationCenter\Templates\ChannelTemplate;
 
 /**
  * A minimal custom channel driver used to prove a developer can register their

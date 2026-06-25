@@ -11,7 +11,7 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "Xjoc",
+            "name": "XJOC",
             "email": "author@example.com",
             "role": "Developer"
         }
@@ -35,12 +35,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Xjoc\\NotificationCenter\\": "src/"
+            "XJOC\\NotificationCenter\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Xjoc\\NotificationCenter\\Tests\\": "tests/"
+            "XJOC\\NotificationCenter\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -57,7 +57,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Xjoc\\NotificationCenter\\NotificationCenterServiceProvider"
+                "XJOC\\NotificationCenter\\NotificationCenterServiceProvider"
             ]
         }
     },

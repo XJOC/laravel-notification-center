@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Tests\Fixtures;
+namespace XJOC\NotificationCenter\Tests\Fixtures;
 
-use Xjoc\NotificationCenter\Contracts\ProvidesNotificationContext;
+use XJOC\NotificationCenter\Contracts\ProvidesNotificationContext;
 
 /**
  * A host domain event that carries notification context. Used by the event

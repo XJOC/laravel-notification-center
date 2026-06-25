@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Exceptions;
+namespace XJOC\NotificationCenter\Exceptions;
 
 use RuntimeException;
 

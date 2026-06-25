@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Models;
+namespace XJOC\NotificationCenter\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Support\Carbon;
-use Xjoc\NotificationCenter\Enums\CreatedBy;
-use Xjoc\NotificationCenter\Enums\NotificationCategory;
+use XJOC\NotificationCenter\Enums\CreatedBy;
+use XJOC\NotificationCenter\Enums\NotificationCategory;
 
 /**
  * @property int $id

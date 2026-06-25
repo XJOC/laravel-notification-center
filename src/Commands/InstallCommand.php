@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Commands;
+namespace XJOC\NotificationCenter\Commands;
 
 use Illuminate\Console\Command;
 

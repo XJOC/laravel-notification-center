@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Http\Controllers\Admin;
+namespace XJOC\NotificationCenter\Http\Controllers\Admin;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Routing\Controller;
-use Xjoc\NotificationCenter\Http\Resources\NotificationTypeResource;
-use Xjoc\NotificationCenter\Models\NotificationType;
+use XJOC\NotificationCenter\Http\Resources\NotificationTypeResource;
+use XJOC\NotificationCenter\Models\NotificationType;
 
 final class SettingController extends Controller
 {

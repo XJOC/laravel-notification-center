@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Channels;
+namespace XJOC\NotificationCenter\Channels;
 
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
 use Illuminate\Notifications\Notification;
-use Xjoc\NotificationCenter\Contracts\NotificationChannel;
-use Xjoc\NotificationCenter\Contracts\WhatsappTransport;
-use Xjoc\NotificationCenter\Enums\Channel;
-use Xjoc\NotificationCenter\Templates\ChannelTemplate;
-use Xjoc\NotificationCenter\Templates\TemplateRenderer;
+use XJOC\NotificationCenter\Contracts\NotificationChannel;
+use XJOC\NotificationCenter\Contracts\WhatsappTransport;
+use XJOC\NotificationCenter\Enums\Channel;
+use XJOC\NotificationCenter\Templates\ChannelTemplate;
+use XJOC\NotificationCenter\Templates\TemplateRenderer;
 
 /**
  * WhatsApp driver. Two responsibilities:

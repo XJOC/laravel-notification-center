@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Tests;
+namespace XJOC\NotificationCenter\Tests;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Notifications\ChannelManager;
@@ -10,20 +10,20 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Testing\PendingCommand;
 use Orchestra\Testbench\TestCase as Orchestra;
 use RuntimeException;
-use Xjoc\NotificationCenter\Channels\DatabaseChannel;
-use Xjoc\NotificationCenter\Channels\MailChannel;
-use Xjoc\NotificationCenter\Channels\WhatsappChannel;
-use Xjoc\NotificationCenter\Enums\Channel;
-use Xjoc\NotificationCenter\Enums\CreatedBy;
-use Xjoc\NotificationCenter\Enums\NotificationCategory;
-use Xjoc\NotificationCenter\Models\NotificationSetting;
-use Xjoc\NotificationCenter\Models\NotificationTemplate;
-use Xjoc\NotificationCenter\Models\NotificationType;
-use Xjoc\NotificationCenter\NotificationCenterServiceProvider;
-use Xjoc\NotificationCenter\Templates\TemplateRenderer;
-use Xjoc\NotificationCenter\Tests\Fixtures\CapturingChannel;
-use Xjoc\NotificationCenter\Tests\Fixtures\NotificationSpy;
-use Xjoc\NotificationCenter\Tests\Fixtures\User;
+use XJOC\NotificationCenter\Channels\DatabaseChannel;
+use XJOC\NotificationCenter\Channels\MailChannel;
+use XJOC\NotificationCenter\Channels\WhatsappChannel;
+use XJOC\NotificationCenter\Enums\Channel;
+use XJOC\NotificationCenter\Enums\CreatedBy;
+use XJOC\NotificationCenter\Enums\NotificationCategory;
+use XJOC\NotificationCenter\Models\NotificationSetting;
+use XJOC\NotificationCenter\Models\NotificationTemplate;
+use XJOC\NotificationCenter\Models\NotificationType;
+use XJOC\NotificationCenter\NotificationCenterServiceProvider;
+use XJOC\NotificationCenter\Templates\TemplateRenderer;
+use XJOC\NotificationCenter\Tests\Fixtures\CapturingChannel;
+use XJOC\NotificationCenter\Tests\Fixtures\NotificationSpy;
+use XJOC\NotificationCenter\Tests\Fixtures\User;
 
 abstract class TestCase extends Orchestra
 {

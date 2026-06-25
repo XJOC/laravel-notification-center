@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Channels;
+namespace XJOC\NotificationCenter\Channels;
 
-use Xjoc\NotificationCenter\Exceptions\UnsupportedWhatsappMessageException;
+use XJOC\NotificationCenter\Exceptions\UnsupportedWhatsappMessageException;
 
 /**
  * A structured WhatsApp message handed to a WhatsappTransport. Modeled after

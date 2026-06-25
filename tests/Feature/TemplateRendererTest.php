@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Xjoc\NotificationCenter\Exceptions\MissingVariableException;
-use Xjoc\NotificationCenter\Templates\TemplateRenderer;
+use XJOC\NotificationCenter\Exceptions\MissingVariableException;
+use XJOC\NotificationCenter\Templates\TemplateRenderer;
 
 beforeEach(function (): void {
     $this->renderer = new TemplateRenderer;

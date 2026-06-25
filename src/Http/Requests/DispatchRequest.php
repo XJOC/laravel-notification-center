@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Http\Requests;
+namespace XJOC\NotificationCenter\Http\Requests;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\In;
-use Xjoc\NotificationCenter\Models\NotificationType;
-use Xjoc\NotificationCenter\Support\RecipientResolver;
+use XJOC\NotificationCenter\Models\NotificationType;
+use XJOC\NotificationCenter\Support\RecipientResolver;
 
 final class DispatchRequest extends FormRequest
 {

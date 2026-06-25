@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Tests\Fixtures;
+namespace XJOC\NotificationCenter\Tests\Fixtures;
 
 /**
  * In-memory recorder used by the CapturingChannel to assert what was delivered

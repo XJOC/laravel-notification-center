@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Http\Controllers\User;
+namespace XJOC\NotificationCenter\Http\Controllers\User;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Xjoc\NotificationCenter\Enums\NotificationCategory;
-use Xjoc\NotificationCenter\Http\Requests\UpdatePreferenceRequest;
-use Xjoc\NotificationCenter\Models\NotificationType;
-use Xjoc\NotificationCenter\Models\NotificationUserPreference;
-use Xjoc\NotificationCenter\Support\PreferenceResolver;
+use XJOC\NotificationCenter\Enums\NotificationCategory;
+use XJOC\NotificationCenter\Http\Requests\UpdatePreferenceRequest;
+use XJOC\NotificationCenter\Models\NotificationType;
+use XJOC\NotificationCenter\Models\NotificationUserPreference;
+use XJOC\NotificationCenter\Support\PreferenceResolver;
 
 final class PreferenceController extends Controller
 {

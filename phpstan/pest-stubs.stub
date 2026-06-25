@@ -26,28 +26,28 @@
 
 namespace {
     /**
-     * @param-closure-this \Xjoc\NotificationCenter\Tests\TestCase $closure
+     * @param-closure-this \XJOC\NotificationCenter\Tests\TestCase $closure
      */
     function beforeEach(?\Closure $closure = null): mixed
     {
     }
 
     /**
-     * @param-closure-this \Xjoc\NotificationCenter\Tests\TestCase $closure
+     * @param-closure-this \XJOC\NotificationCenter\Tests\TestCase $closure
      */
     function test(?string $description = null, ?\Closure $closure = null): mixed
     {
     }
 
     /**
-     * @param-closure-this \Xjoc\NotificationCenter\Tests\TestCase $closure
+     * @param-closure-this \XJOC\NotificationCenter\Tests\TestCase $closure
      */
     function it(string $description, ?\Closure $closure = null): mixed
     {
     }
 }
 
-namespace Xjoc\NotificationCenter\Tests {
+namespace XJOC\NotificationCenter\Tests {
     abstract class TestCase
     {
     }

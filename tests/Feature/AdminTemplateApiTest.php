@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use Xjoc\NotificationCenter\Enums\CreatedBy;
-use Xjoc\NotificationCenter\Enums\NotificationCategory;
-use Xjoc\NotificationCenter\Models\NotificationTemplate;
-use Xjoc\NotificationCenter\Models\NotificationType;
+use XJOC\NotificationCenter\Enums\CreatedBy;
+use XJOC\NotificationCenter\Enums\NotificationCategory;
+use XJOC\NotificationCenter\Models\NotificationTemplate;
+use XJOC\NotificationCenter\Models\NotificationType;
 
 function makeTemplateType(): NotificationType
 {

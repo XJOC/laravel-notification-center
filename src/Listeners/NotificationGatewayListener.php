@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Listeners;
+namespace XJOC\NotificationCenter\Listeners;
 
 use Illuminate\Notifications\Events\NotificationSending;
-use Xjoc\NotificationCenter\Contracts\NotifiableNotification;
-use Xjoc\NotificationCenter\Models\NotificationType;
-use Xjoc\NotificationCenter\Support\NotificationCenterCache;
-use Xjoc\NotificationCenter\Support\PreferenceResolver;
+use XJOC\NotificationCenter\Contracts\NotifiableNotification;
+use XJOC\NotificationCenter\Models\NotificationType;
+use XJOC\NotificationCenter\Support\NotificationCenterCache;
+use XJOC\NotificationCenter\Support\PreferenceResolver;
 
 final class NotificationGatewayListener
 {

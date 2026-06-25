@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter;
+namespace XJOC\NotificationCenter;
 
 use Illuminate\Notifications\ChannelManager;
 use Illuminate\Notifications\Events\NotificationSending;
@@ -11,16 +11,16 @@ use Illuminate\Support\Facades\Schema;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Throwable;
-use Xjoc\NotificationCenter\Channels\ChannelRegistry;
-use Xjoc\NotificationCenter\Channels\NullWhatsappTransport;
-use Xjoc\NotificationCenter\Channels\WhatsappChannel;
-use Xjoc\NotificationCenter\Commands\InstallCommand;
-use Xjoc\NotificationCenter\Commands\SyncCommand;
-use Xjoc\NotificationCenter\Contracts\WhatsappTransport;
-use Xjoc\NotificationCenter\Enums\Channel;
-use Xjoc\NotificationCenter\Listeners\EventBindingListener;
-use Xjoc\NotificationCenter\Listeners\NotificationGatewayListener;
-use Xjoc\NotificationCenter\Support\NotificationCenterCache;
+use XJOC\NotificationCenter\Channels\ChannelRegistry;
+use XJOC\NotificationCenter\Channels\NullWhatsappTransport;
+use XJOC\NotificationCenter\Channels\WhatsappChannel;
+use XJOC\NotificationCenter\Commands\InstallCommand;
+use XJOC\NotificationCenter\Commands\SyncCommand;
+use XJOC\NotificationCenter\Contracts\WhatsappTransport;
+use XJOC\NotificationCenter\Enums\Channel;
+use XJOC\NotificationCenter\Listeners\EventBindingListener;
+use XJOC\NotificationCenter\Listeners\NotificationGatewayListener;
+use XJOC\NotificationCenter\Support\NotificationCenterCache;
 
 final class NotificationCenterServiceProvider extends PackageServiceProvider
 {

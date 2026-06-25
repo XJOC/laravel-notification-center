@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Http\Controllers\Admin;
+namespace XJOC\NotificationCenter\Http\Controllers\Admin;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
-use Xjoc\NotificationCenter\Facades\NotificationCenter;
-use Xjoc\NotificationCenter\Http\Requests\DispatchRequest;
-use Xjoc\NotificationCenter\Models\NotificationType;
-use Xjoc\NotificationCenter\Support\RecipientResolver;
+use XJOC\NotificationCenter\Facades\NotificationCenter;
+use XJOC\NotificationCenter\Http\Requests\DispatchRequest;
+use XJOC\NotificationCenter\Models\NotificationType;
+use XJOC\NotificationCenter\Support\RecipientResolver;
 
 final class DispatchController extends Controller
 {

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Http\Requests;
+namespace XJOC\NotificationCenter\Http\Requests;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
-use Xjoc\NotificationCenter\Models\NotificationType;
+use XJOC\NotificationCenter\Models\NotificationType;
 
 final class UpsertTemplateRequest extends FormRequest
 {

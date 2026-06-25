@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-use Xjoc\NotificationCenter\Enums\CreatedBy;
-use Xjoc\NotificationCenter\Enums\NotificationCategory;
-use Xjoc\NotificationCenter\Models\NotificationType;
-use Xjoc\NotificationCenter\Tests\Fixtures\NotificationSpy;
-use Xjoc\NotificationCenter\Tests\Fixtures\User;
+use XJOC\NotificationCenter\Enums\CreatedBy;
+use XJOC\NotificationCenter\Enums\NotificationCategory;
+use XJOC\NotificationCenter\Models\NotificationType;
+use XJOC\NotificationCenter\Tests\Fixtures\NotificationSpy;
+use XJOC\NotificationCenter\Tests\Fixtures\User;
 
 /**
  * @param  array<int, string>  $channels

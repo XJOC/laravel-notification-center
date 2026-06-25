@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Http\Requests;
+namespace XJOC\NotificationCenter\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\In;
-use Xjoc\NotificationCenter\Channels\ChannelRegistry;
-use Xjoc\NotificationCenter\Enums\NotificationCategory;
+use XJOC\NotificationCenter\Channels\ChannelRegistry;
+use XJOC\NotificationCenter\Enums\NotificationCategory;
 
 final class StoreTypeRequest extends FormRequest
 {

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Channels;
+namespace XJOC\NotificationCenter\Channels;
 
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
 use Illuminate\Notifications\Messages\MailMessage;
-use Xjoc\NotificationCenter\Contracts\NotificationChannel;
-use Xjoc\NotificationCenter\Enums\Channel;
-use Xjoc\NotificationCenter\Templates\ChannelTemplate;
-use Xjoc\NotificationCenter\Templates\TemplateRenderer;
+use XJOC\NotificationCenter\Contracts\NotificationChannel;
+use XJOC\NotificationCenter\Enums\Channel;
+use XJOC\NotificationCenter\Templates\ChannelTemplate;
+use XJOC\NotificationCenter\Templates\TemplateRenderer;
 
 /**
  * Mail driver: renders the subject as plain text and the body with HTML escaping

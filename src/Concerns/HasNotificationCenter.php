@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Concerns;
+namespace XJOC\NotificationCenter\Concerns;
 
 use Illuminate\Notifications\Messages\MailMessage;
 use LogicException;
-use Xjoc\NotificationCenter\Channels\ChannelRegistry;
-use Xjoc\NotificationCenter\Enums\Channel;
-use Xjoc\NotificationCenter\Exceptions\MissingTemplateException;
-use Xjoc\NotificationCenter\Support\NotificationCenterCache;
-use Xjoc\NotificationCenter\Templates\ChannelTemplate;
+use XJOC\NotificationCenter\Channels\ChannelRegistry;
+use XJOC\NotificationCenter\Enums\Channel;
+use XJOC\NotificationCenter\Exceptions\MissingTemplateException;
+use XJOC\NotificationCenter\Support\NotificationCenterCache;
+use XJOC\NotificationCenter\Templates\ChannelTemplate;
 
 trait HasNotificationCenter
 {

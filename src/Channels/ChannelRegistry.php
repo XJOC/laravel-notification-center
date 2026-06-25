@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Channels;
+namespace XJOC\NotificationCenter\Channels;
 
 use Illuminate\Contracts\Container\Container;
-use Xjoc\NotificationCenter\Contracts\NotificationChannel;
-use Xjoc\NotificationCenter\Exceptions\UnregisteredChannelException;
+use XJOC\NotificationCenter\Contracts\NotificationChannel;
+use XJOC\NotificationCenter\Exceptions\UnregisteredChannelException;
 
 /**
  * Developer-facing registry of channel drivers. Drivers are registered by the

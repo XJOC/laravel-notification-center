@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Http\Controllers\Admin;
+namespace XJOC\NotificationCenter\Http\Controllers\Admin;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller;
-use Xjoc\NotificationCenter\Channels\ChannelRegistry;
+use XJOC\NotificationCenter\Channels\ChannelRegistry;
 
 /**
  * Read-only listing of the registered channel keys so an admin UI can show the

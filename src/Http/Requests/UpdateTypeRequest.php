@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Http\Requests;
+namespace XJOC\NotificationCenter\Http\Requests;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\In;
-use Xjoc\NotificationCenter\Channels\ChannelRegistry;
-use Xjoc\NotificationCenter\Models\NotificationType;
+use XJOC\NotificationCenter\Channels\ChannelRegistry;
+use XJOC\NotificationCenter\Models\NotificationType;
 
 final class UpdateTypeRequest extends FormRequest
 {

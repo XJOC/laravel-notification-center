@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Contracts;
+namespace XJOC\NotificationCenter\Contracts;
 
-use Xjoc\NotificationCenter\Templates\ChannelTemplate;
+use XJOC\NotificationCenter\Templates\ChannelTemplate;
 
 /**
  * A channel driver owns the rendering of its OWN template format: it receives

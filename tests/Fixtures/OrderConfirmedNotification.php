@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Tests\Fixtures;
+namespace XJOC\NotificationCenter\Tests\Fixtures;
 
 use Illuminate\Notifications\Notification;
-use Xjoc\NotificationCenter\Concerns\HasNotificationCenter;
-use Xjoc\NotificationCenter\Contracts\NotifiableNotification;
+use XJOC\NotificationCenter\Concerns\HasNotificationCenter;
+use XJOC\NotificationCenter\Contracts\NotifiableNotification;
 
 /**
  * A typical low-touch host notification: it declares its type + variables and

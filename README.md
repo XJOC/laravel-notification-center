@@ -73,7 +73,7 @@ in the **host** application, not in this package:
 - **`whatsapp` channel** ships a driver (`WhatsappChannel`) that renders the template to
   text and hands a structured `WhatsappMessage` to a `WhatsappTransport` you supply. The
   package ships **no provider integration**: implement
-  `Xjoc\NotificationCenter\Contracts\WhatsappTransport` (one method,
+  `XJOC\NotificationCenter\Contracts\WhatsappTransport` (one method,
   `send(WhatsappMessage $message): void`) to map the message to your provider (Twilio,
   Meta Cloud API, …) and register it via the `notification-center.whatsapp.transport`
   config (FQCN) or by binding the interface in a service provider. Until you do, WhatsApp
@@ -118,8 +118,8 @@ declare(strict_types=1);
 namespace App\Notifications;
 
 use Illuminate\Notifications\Notification;
-use Xjoc\NotificationCenter\Concerns\HasNotificationCenter;
-use Xjoc\NotificationCenter\Contracts\NotifiableNotification;
+use XJOC\NotificationCenter\Concerns\HasNotificationCenter;
+use XJOC\NotificationCenter\Contracts\NotifiableNotification;
 
 final class OrderConfirmedNotification extends Notification implements NotifiableNotification
 {
@@ -284,7 +284,7 @@ $user->notify(new OrderConfirmedNotification($orderId, $total));
 When you don't have a dedicated notification class, dispatch by type key:
 
 ```php
-use Xjoc\NotificationCenter\Facades\NotificationCenter;
+use XJOC\NotificationCenter\Facades\NotificationCenter;
 
 NotificationCenter::send(
     typeKey: 'order.confirmed',
@@ -321,7 +321,7 @@ declare(strict_types=1);
 
 namespace App\Events;
 
-use Xjoc\NotificationCenter\Contracts\ProvidesNotificationContext;
+use XJOC\NotificationCenter\Contracts\ProvidesNotificationContext;
 
 final class OrderWasConfirmed implements ProvidesNotificationContext
 {

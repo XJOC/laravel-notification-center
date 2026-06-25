@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Xjoc\NotificationCenter\Channels\ChannelRegistry;
-use Xjoc\NotificationCenter\Tests\Fixtures\FakeChannel;
+use XJOC\NotificationCenter\Channels\ChannelRegistry;
+use XJOC\NotificationCenter\Tests\Fixtures\FakeChannel;
 
 it('returns exactly the registered channel keys', function (): void {
     $response = $this->getJson('notification-center/admin/channels');

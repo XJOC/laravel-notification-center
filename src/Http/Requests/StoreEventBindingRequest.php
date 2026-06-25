@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Http\Requests;
+namespace XJOC\NotificationCenter\Http\Requests;
 
 use Closure;
 use Illuminate\Contracts\Validation\ValidationRule;

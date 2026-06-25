@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Contracts;
+namespace XJOC\NotificationCenter\Contracts;
 
-use Xjoc\NotificationCenter\Channels\WhatsappMessage;
+use XJOC\NotificationCenter\Channels\WhatsappMessage;
 
 /**
  * Delivery contract for WhatsApp. The package renders the template and builds a

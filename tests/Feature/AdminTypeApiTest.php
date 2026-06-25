@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-use Xjoc\NotificationCenter\Enums\CreatedBy;
-use Xjoc\NotificationCenter\Enums\NotificationCategory;
-use Xjoc\NotificationCenter\Models\NotificationSetting;
-use Xjoc\NotificationCenter\Models\NotificationType;
+use XJOC\NotificationCenter\Enums\CreatedBy;
+use XJOC\NotificationCenter\Enums\NotificationCategory;
+use XJOC\NotificationCenter\Models\NotificationSetting;
+use XJOC\NotificationCenter\Models\NotificationType;
 
 it('lists notification types with their settings', function (): void {
     $type = NotificationType::query()->create([

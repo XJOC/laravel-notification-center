@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Channels;
+namespace XJOC\NotificationCenter\Channels;
 
-use Xjoc\NotificationCenter\Contracts\WhatsappTransport;
-use Xjoc\NotificationCenter\Exceptions\MissingWhatsappTransportException;
+use XJOC\NotificationCenter\Contracts\WhatsappTransport;
+use XJOC\NotificationCenter\Exceptions\MissingWhatsappTransportException;
 
 /**
  * The default WhatsApp transport. It ships zero provider integration: any

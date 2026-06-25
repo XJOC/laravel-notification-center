@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Http\Resources;
+namespace XJOC\NotificationCenter\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
-use Xjoc\NotificationCenter\Models\NotificationSetting;
+use XJOC\NotificationCenter\Models\NotificationSetting;
 
 /**
  * @mixin NotificationSetting

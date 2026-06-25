@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter;
+namespace XJOC\NotificationCenter;
 
 use Illuminate\Contracts\Notifications\Dispatcher;
-use Xjoc\NotificationCenter\Notifications\GenericNotification;
+use XJOC\NotificationCenter\Notifications\GenericNotification;
 
 final class NotificationCenterManager
 {

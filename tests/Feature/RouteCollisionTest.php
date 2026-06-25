@@ -25,7 +25,7 @@ if (! function_exists('nc_package_routes')) {
         return collect(Route::getRoutes()->getRoutes())
             ->filter(fn (IlluminateRoute $route): bool => str_contains(
                 $route->getActionName(),
-                'Xjoc\\NotificationCenter\\'
+                'XJOC\\NotificationCenter\\'
             ))
             ->values()
             ->all();

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Enums;
+namespace XJOC\NotificationCenter\Enums;
 
 enum NotificationCategory: string
 {

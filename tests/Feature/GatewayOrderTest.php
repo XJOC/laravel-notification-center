@@ -3,13 +3,13 @@
 declare(strict_types=1);
 
 use Illuminate\Notifications\Notification;
-use Xjoc\NotificationCenter\Models\NotificationSetting;
-use Xjoc\NotificationCenter\Models\NotificationTemplate;
-use Xjoc\NotificationCenter\Models\NotificationType;
-use Xjoc\NotificationCenter\Models\NotificationUserPreference;
-use Xjoc\NotificationCenter\Tests\Fixtures\NotificationSpy;
-use Xjoc\NotificationCenter\Tests\Fixtures\OrderConfirmedNotification;
-use Xjoc\NotificationCenter\Tests\Fixtures\User;
+use XJOC\NotificationCenter\Models\NotificationSetting;
+use XJOC\NotificationCenter\Models\NotificationTemplate;
+use XJOC\NotificationCenter\Models\NotificationType;
+use XJOC\NotificationCenter\Models\NotificationUserPreference;
+use XJOC\NotificationCenter\Tests\Fixtures\NotificationSpy;
+use XJOC\NotificationCenter\Tests\Fixtures\OrderConfirmedNotification;
+use XJOC\NotificationCenter\Tests\Fixtures\User;
 
 /**
  * Create a NotificationType row plus a matching setting + template for the

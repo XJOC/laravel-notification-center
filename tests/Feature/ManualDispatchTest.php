@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Collection;
-use Xjoc\NotificationCenter\Facades\NotificationCenter;
-use Xjoc\NotificationCenter\Models\NotificationSetting;
-use Xjoc\NotificationCenter\Models\NotificationTemplate;
-use Xjoc\NotificationCenter\Models\NotificationType;
-use Xjoc\NotificationCenter\Tests\Fixtures\NotificationSpy;
-use Xjoc\NotificationCenter\Tests\Fixtures\User;
+use XJOC\NotificationCenter\Facades\NotificationCenter;
+use XJOC\NotificationCenter\Models\NotificationSetting;
+use XJOC\NotificationCenter\Models\NotificationTemplate;
+use XJOC\NotificationCenter\Models\NotificationType;
+use XJOC\NotificationCenter\Tests\Fixtures\NotificationSpy;
+use XJOC\NotificationCenter\Tests\Fixtures\User;
 
 /**
  * @param  array<int, string>  $channels

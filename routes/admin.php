@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Support\Facades\Route;
-use Xjoc\NotificationCenter\Http\Controllers\Admin\ChannelController;
-use Xjoc\NotificationCenter\Http\Controllers\Admin\DispatchController;
-use Xjoc\NotificationCenter\Http\Controllers\Admin\EventBindingController;
-use Xjoc\NotificationCenter\Http\Controllers\Admin\SettingController;
-use Xjoc\NotificationCenter\Http\Controllers\Admin\TemplateController;
-use Xjoc\NotificationCenter\Http\Controllers\Admin\TypeController;
+use XJOC\NotificationCenter\Http\Controllers\Admin\ChannelController;
+use XJOC\NotificationCenter\Http\Controllers\Admin\DispatchController;
+use XJOC\NotificationCenter\Http\Controllers\Admin\EventBindingController;
+use XJOC\NotificationCenter\Http\Controllers\Admin\SettingController;
+use XJOC\NotificationCenter\Http\Controllers\Admin\TemplateController;
+use XJOC\NotificationCenter\Http\Controllers\Admin\TypeController;
 
 Route::prefix(config('notification-center.route_prefix').'/admin')
     ->middleware(array_merge((array) config('notification-center.admin_middleware'), [SubstituteBindings::class]))

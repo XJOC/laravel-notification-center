@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Http\Controllers\Admin;
+namespace XJOC\NotificationCenter\Http\Controllers\Admin;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Routing\Controller;
-use Xjoc\NotificationCenter\Http\Requests\StoreEventBindingRequest;
-use Xjoc\NotificationCenter\Http\Resources\NotificationEventBindingResource;
-use Xjoc\NotificationCenter\Models\NotificationEventBinding;
-use Xjoc\NotificationCenter\Models\NotificationType;
-use Xjoc\NotificationCenter\Support\NotificationCenterCache;
+use XJOC\NotificationCenter\Http\Requests\StoreEventBindingRequest;
+use XJOC\NotificationCenter\Http\Resources\NotificationEventBindingResource;
+use XJOC\NotificationCenter\Models\NotificationEventBinding;
+use XJOC\NotificationCenter\Models\NotificationType;
+use XJOC\NotificationCenter\Support\NotificationCenterCache;
 
 final class EventBindingController extends Controller
 {

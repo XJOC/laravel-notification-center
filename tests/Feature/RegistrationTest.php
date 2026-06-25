@@ -4,13 +4,13 @@ declare(strict_types=1);
 
 use Illuminate\Notifications\Events\NotificationSending;
 use Illuminate\Support\Facades\Event;
-use Xjoc\NotificationCenter\Facades\NotificationCenter;
-use Xjoc\NotificationCenter\Listeners\NotificationGatewayListener;
-use Xjoc\NotificationCenter\NotificationCenterManager;
-use Xjoc\NotificationCenter\Support\NotificationCenterCache;
-use Xjoc\NotificationCenter\Support\PreferenceResolver;
-use Xjoc\NotificationCenter\Support\RecipientResolver;
-use Xjoc\NotificationCenter\Templates\TemplateRenderer;
+use XJOC\NotificationCenter\Facades\NotificationCenter;
+use XJOC\NotificationCenter\Listeners\NotificationGatewayListener;
+use XJOC\NotificationCenter\NotificationCenterManager;
+use XJOC\NotificationCenter\Support\NotificationCenterCache;
+use XJOC\NotificationCenter\Support\PreferenceResolver;
+use XJOC\NotificationCenter\Support\RecipientResolver;
+use XJOC\NotificationCenter\Templates\TemplateRenderer;
 
 it('resolves the notification-center binding to the manager', function (): void {
     $resolved = app()->make('notification-center');

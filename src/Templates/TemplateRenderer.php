@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Templates;
+namespace XJOC\NotificationCenter\Templates;
 
 use Illuminate\Support\Arr;
-use Xjoc\NotificationCenter\Exceptions\MissingVariableException;
+use XJOC\NotificationCenter\Exceptions\MissingVariableException;
 
 final class TemplateRenderer
 {

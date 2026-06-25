@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Tests\Fixtures;
+namespace XJOC\NotificationCenter\Tests\Fixtures;
 
 use Illuminate\Notifications\Notification;
-use Xjoc\NotificationCenter\Enums\Channel;
+use XJOC\NotificationCenter\Enums\Channel;
 
 /**
  * A test channel driver registered via ChannelManager->extend(). Instead of

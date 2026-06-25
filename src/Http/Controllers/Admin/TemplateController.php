@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Http\Controllers\Admin;
+namespace XJOC\NotificationCenter\Http\Controllers\Admin;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Routing\Controller;
-use Xjoc\NotificationCenter\Http\Requests\UpsertTemplateRequest;
-use Xjoc\NotificationCenter\Http\Resources\NotificationTemplateResource;
-use Xjoc\NotificationCenter\Models\NotificationTemplate;
-use Xjoc\NotificationCenter\Models\NotificationType;
-use Xjoc\NotificationCenter\Support\NotificationCenterCache;
+use XJOC\NotificationCenter\Http\Requests\UpsertTemplateRequest;
+use XJOC\NotificationCenter\Http\Resources\NotificationTemplateResource;
+use XJOC\NotificationCenter\Models\NotificationTemplate;
+use XJOC\NotificationCenter\Models\NotificationType;
+use XJOC\NotificationCenter\Support\NotificationCenterCache;
 
 final class TemplateController extends Controller
 {

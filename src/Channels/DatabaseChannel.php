@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Channels;
+namespace XJOC\NotificationCenter\Channels;
 
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
-use Xjoc\NotificationCenter\Contracts\NotificationChannel;
-use Xjoc\NotificationCenter\Enums\Channel;
-use Xjoc\NotificationCenter\Templates\ChannelTemplate;
-use Xjoc\NotificationCenter\Templates\TemplateRenderer;
+use XJOC\NotificationCenter\Contracts\NotificationChannel;
+use XJOC\NotificationCenter\Enums\Channel;
+use XJOC\NotificationCenter\Templates\ChannelTemplate;
+use XJOC\NotificationCenter\Templates\TemplateRenderer;
 
 /**
  * Database driver: renders subject + body as raw text (the stored payload is

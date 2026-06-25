@@ -1,9 +1,9 @@
 <?php
 
 declare(strict_types=1);
-use Xjoc\NotificationCenter\Channels\DatabaseChannel;
-use Xjoc\NotificationCenter\Channels\MailChannel;
-use Xjoc\NotificationCenter\Channels\WhatsappChannel;
+use XJOC\NotificationCenter\Channels\DatabaseChannel;
+use XJOC\NotificationCenter\Channels\MailChannel;
+use XJOC\NotificationCenter\Channels\WhatsappChannel;
 
 return [
     'admin_middleware' => ['auth:sanctum', 'role:admin'],
@@ -20,10 +20,10 @@ return [
     ],
 
     // Registered channel drivers, keyed by channel name. Each driver implements
-    // Xjoc\NotificationCenter\Contracts\NotificationChannel and renders its own
+    // XJOC\NotificationCenter\Contracts\NotificationChannel and renders its own
     // template format. This map is the authoritative list of channels an admin
     // may assign to a notification type. Add custom channels here (or register
-    // them on Xjoc\NotificationCenter\Channels\ChannelRegistry in a provider).
+    // them on XJOC\NotificationCenter\Channels\ChannelRegistry in a provider).
     'channels' => [
         'mail' => MailChannel::class,
         'database' => DatabaseChannel::class,
@@ -45,7 +45,7 @@ return [
     ],
 
     'whatsapp' => [
-        // Your implementation of Xjoc\NotificationCenter\Contracts\WhatsappTransport
+        // Your implementation of XJOC\NotificationCenter\Contracts\WhatsappTransport
         // (FQCN), or bind the interface in a service provider. The package ships
         // NO provider integration; until you configure a transport, WhatsApp
         // delivery throws a clear exception.

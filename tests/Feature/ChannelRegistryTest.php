@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-use Xjoc\NotificationCenter\Channels\ChannelRegistry;
-use Xjoc\NotificationCenter\Channels\MailChannel;
-use Xjoc\NotificationCenter\Channels\WhatsappChannel;
-use Xjoc\NotificationCenter\Contracts\NotificationChannel;
-use Xjoc\NotificationCenter\Exceptions\UnregisteredChannelException;
-use Xjoc\NotificationCenter\Tests\Fixtures\FakeChannel;
+use XJOC\NotificationCenter\Channels\ChannelRegistry;
+use XJOC\NotificationCenter\Channels\MailChannel;
+use XJOC\NotificationCenter\Channels\WhatsappChannel;
+use XJOC\NotificationCenter\Contracts\NotificationChannel;
+use XJOC\NotificationCenter\Exceptions\UnregisteredChannelException;
+use XJOC\NotificationCenter\Tests\Fixtures\FakeChannel;
 
 it('resolves a registered driver by key', function (): void {
     $registry = app(ChannelRegistry::class);

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Facades;
+namespace XJOC\NotificationCenter\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use Xjoc\NotificationCenter\NotificationCenterManager;
+use XJOC\NotificationCenter\NotificationCenterManager;
 
 /**
  * @method static void send(string $typeKey, iterable<int, object>|object $notifiables, array<string, mixed> $variables = [], array<int, string>|null $channels = null)

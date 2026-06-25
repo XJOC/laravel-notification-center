@@ -3,10 +3,10 @@
 declare(strict_types=1);
 
 use Illuminate\Notifications\Messages\MailMessage;
-use Xjoc\NotificationCenter\Exceptions\MissingTemplateException;
-use Xjoc\NotificationCenter\Tests\Fixtures\CustomMailNotification;
-use Xjoc\NotificationCenter\Tests\Fixtures\OrderConfirmedNotification;
-use Xjoc\NotificationCenter\Tests\Fixtures\User;
+use XJOC\NotificationCenter\Exceptions\MissingTemplateException;
+use XJOC\NotificationCenter\Tests\Fixtures\CustomMailNotification;
+use XJOC\NotificationCenter\Tests\Fixtures\OrderConfirmedNotification;
+use XJOC\NotificationCenter\Tests\Fixtures\User;
 
 it('builds a mail message with subject and body from the injected template', function (): void {
     /** @var User $user */

@@ -3,16 +3,16 @@
 declare(strict_types=1);
 
 use Illuminate\Notifications\Notification;
-use Xjoc\NotificationCenter\Channels\WhatsappChannel;
-use Xjoc\NotificationCenter\Channels\WhatsappMessage;
-use Xjoc\NotificationCenter\Concerns\HasNotificationCenter;
-use Xjoc\NotificationCenter\Contracts\NotifiableNotification;
-use Xjoc\NotificationCenter\Contracts\WhatsappTransport;
-use Xjoc\NotificationCenter\Exceptions\MissingWhatsappTransportException;
-use Xjoc\NotificationCenter\Exceptions\UnsupportedWhatsappMessageException;
-use Xjoc\NotificationCenter\Tests\Fixtures\FakeWhatsappTransport;
-use Xjoc\NotificationCenter\Tests\Fixtures\OrderConfirmedNotification;
-use Xjoc\NotificationCenter\Tests\Fixtures\User;
+use XJOC\NotificationCenter\Channels\WhatsappChannel;
+use XJOC\NotificationCenter\Channels\WhatsappMessage;
+use XJOC\NotificationCenter\Concerns\HasNotificationCenter;
+use XJOC\NotificationCenter\Contracts\NotifiableNotification;
+use XJOC\NotificationCenter\Contracts\WhatsappTransport;
+use XJOC\NotificationCenter\Exceptions\MissingWhatsappTransportException;
+use XJOC\NotificationCenter\Exceptions\UnsupportedWhatsappMessageException;
+use XJOC\NotificationCenter\Tests\Fixtures\FakeWhatsappTransport;
+use XJOC\NotificationCenter\Tests\Fixtures\OrderConfirmedNotification;
+use XJOC\NotificationCenter\Tests\Fixtures\User;
 
 it('renders to text and delegates delivery to the bound transport', function (): void {
     $fake = new FakeWhatsappTransport;

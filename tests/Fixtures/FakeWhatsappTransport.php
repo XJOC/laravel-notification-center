@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Tests\Fixtures;
+namespace XJOC\NotificationCenter\Tests\Fixtures;
 
-use Xjoc\NotificationCenter\Channels\WhatsappMessage;
-use Xjoc\NotificationCenter\Contracts\WhatsappTransport;
+use XJOC\NotificationCenter\Channels\WhatsappMessage;
+use XJOC\NotificationCenter\Contracts\WhatsappTransport;
 
 /**
  * A test transport that captures the structured WhatsappMessage instead of

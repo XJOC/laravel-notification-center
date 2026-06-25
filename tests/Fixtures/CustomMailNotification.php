@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Tests\Fixtures;
+namespace XJOC\NotificationCenter\Tests\Fixtures;
 
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use Xjoc\NotificationCenter\Concerns\HasNotificationCenter;
-use Xjoc\NotificationCenter\Contracts\NotifiableNotification;
+use XJOC\NotificationCenter\Concerns\HasNotificationCenter;
+use XJOC\NotificationCenter\Contracts\NotifiableNotification;
 
 /**
  * Proves the "developer wins" rule: when a host overrides toMail(), their method

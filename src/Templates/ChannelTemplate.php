@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Xjoc\NotificationCenter\Templates;
+namespace XJOC\NotificationCenter\Templates;
 
 /**
  * An immutable, raw (un-rendered) template handed to a channel driver. The

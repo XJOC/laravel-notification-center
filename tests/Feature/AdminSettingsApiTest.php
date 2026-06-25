@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use Xjoc\NotificationCenter\Enums\CreatedBy;
-use Xjoc\NotificationCenter\Enums\NotificationCategory;
-use Xjoc\NotificationCenter\Models\NotificationType;
+use XJOC\NotificationCenter\Enums\CreatedBy;
+use XJOC\NotificationCenter\Enums\NotificationCategory;
+use XJOC\NotificationCenter\Models\NotificationType;
 
 it('returns a settings overview of every type with its channel settings', function (): void {
     $order = NotificationType::query()->create([
