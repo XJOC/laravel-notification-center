@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Schema;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Throwable;
+use Xjoc\NotificationCenter\Channels\ChannelRegistry;
 use Xjoc\NotificationCenter\Commands\InstallCommand;
 use Xjoc\NotificationCenter\Commands\SyncCommand;
 use Xjoc\NotificationCenter\Listeners\EventBindingListener;
@@ -38,6 +39,20 @@ final class NotificationCenterServiceProvider extends PackageServiceProvider
 
     public function packageRegistered(): void
     {
+        $this->app->singleton(ChannelRegistry::class, function ($app): ChannelRegistry {
+            $registry = new ChannelRegistry($app);
+
+            $channels = (array) config('notification-center.channels', []);
+
+            foreach ($channels as $key => $driver) {
+                if (is_string($key) && is_string($driver)) {
+                    $registry->register($key, $driver);
+                }
+            }
+
+            return $registry;
+        });
+
         $this->app->singleton(NotificationCenterCache::class);
         $this->app->singleton(NotificationCenterManager::class);
         $this->app->singleton(

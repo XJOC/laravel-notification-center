@@ -7,6 +7,7 @@ namespace Xjoc\NotificationCenter\Support;
 use Illuminate\Contracts\Cache\Factory as CacheFactory;
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
 use Illuminate\Contracts\Config\Repository as ConfigRepository;
+use Xjoc\NotificationCenter\Channels\ChannelRegistry;
 use Xjoc\NotificationCenter\Models\NotificationEventBinding;
 use Xjoc\NotificationCenter\Models\NotificationSetting;
 use Xjoc\NotificationCenter\Models\NotificationTemplate;
@@ -17,6 +18,7 @@ final class NotificationCenterCache
     public function __construct(
         private CacheFactory $cache,
         private ConfigRepository $config,
+        private ChannelRegistry $channels,
     ) {}
 
     public function type(string $key): ?NotificationType
@@ -209,13 +211,12 @@ final class NotificationCenterCache
     }
 
     /**
+     * The registered channel keys — used to invalidate per-channel cache entries.
+     *
      * @return array<int, string>
      */
     private function configuredChannels(): array
     {
-        /** @var array<int, string> $channels */
-        $channels = (array) $this->config->get('notification-center.channels', []);
-
-        return $channels;
+        return $this->channels->keys();
     }
 }

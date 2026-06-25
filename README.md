@@ -193,13 +193,12 @@ Blocking a single channel does not block the others — the decision is made per
 | `route_prefix`            | `'notification-center'`              | URL prefix for both route groups.                                       |
 | `user_model`              | `'App\Models\User'`                  | String class name (never autoloaded at config-parse time).              |
 | `notifiable_models`       | `['App\Models\User']`                | **Allowlist** of models permitted as dispatch recipients.               |
-| `channels`                | `['mail', 'database', 'whatsapp']`   | Channels the center knows about. Custom channels are allowed.           |
+| `channels`                | `['mail' => MailChannel::class, 'database' => DatabaseChannel::class, 'whatsapp' => WhatsappChannel::class]` | Map of channel key => driver class (implementing `NotificationChannel`). The registered keys are the authoritative admin-pickable list. Add a custom channel by adding a `key => class` entry here or calling `ChannelRegistry::register()` in a provider. |
 | `cache.enabled`           | `true`                               | Toggle the lookup cache. When `false`, every read hits the DB directly. |
 | `cache.store`             | `null`                               | Cache store name (`null` = default store).                              |
 | `cache.ttl`               | `3600`                               | Cache TTL in seconds.                                                   |
 | `cache.prefix`            | `'notification-center'`              | Cache key prefix.                                                       |
-| `templates.escape_html`   | `true`                               | Escape variable **values** on HTML channels.                            |
-| `templates.html_channels` | `['mail']`                           | Channels treated as HTML for escaping.                                  |
+| `templates.escape_html`   | `true`                               | When enabled, the mail driver escapes variable **values** in the body via `e()`. |
 | `templates.on_missing_var`| `'empty'`                            | `'empty'` (blank) or `'throw'` (`MissingVariableException`) for unknown template variables. |
 | `types`                   | see below                            | Tier-1 coded types synced via `notification-center:sync`.               |
 
@@ -395,10 +394,11 @@ keep the gateway cheap on the hot path. Behaviour:
 ## Security
 
 - **Output escaping.** The template renderer supports two token forms: escaped
-  `{{ key }}` and raw `{!! key !!}`. On HTML channels (`templates.html_channels`,
-  default `['mail']`) escaped values are passed through Laravel's `e()` helper when
-  `templates.escape_html` is enabled. Use `{!! ... !!}` only for values you trust to be
-  safe HTML. Unknown variables resolve to empty (or throw, per
+  `{{ key }}` and raw `{!! key !!}`. Escaping is decided per channel driver. The mail
+  driver passes escaped `{{ key }}` values in the **body** through Laravel's `e()`
+  helper when `templates.escape_html` is enabled, and renders the **subject** raw. The
+  database and whatsapp drivers render raw. Use `{!! ... !!}` only for values you trust
+  to be safe HTML. Unknown variables resolve to empty (or throw, per
   `templates.on_missing_var`).
 - **Essential protection.** Essential types are force-locked and force-enabled, bypass
   the gateway entirely, and **cannot** be disabled by an admin (`422`) or opted out of

@@ -7,6 +7,7 @@ namespace Xjoc\NotificationCenter\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\In;
+use Xjoc\NotificationCenter\Channels\ChannelRegistry;
 use Xjoc\NotificationCenter\Enums\NotificationCategory;
 
 final class StoreTypeRequest extends FormRequest
@@ -45,13 +46,12 @@ final class StoreTypeRequest extends FormRequest
     }
 
     /**
+     * The registered channel keys — the only channels an admin may assign.
+     *
      * @return array<int, string>
      */
     private function configuredChannels(): array
     {
-        /** @var array<int, string> $channels */
-        $channels = (array) config('notification-center.channels', []);
-
-        return $channels;
+        return app(ChannelRegistry::class)->keys();
     }
 }

@@ -1,6 +1,9 @@
 <?php
 
 declare(strict_types=1);
+use Xjoc\NotificationCenter\Channels\DatabaseChannel;
+use Xjoc\NotificationCenter\Channels\MailChannel;
+use Xjoc\NotificationCenter\Channels\WhatsappChannel;
 
 return [
     'admin_middleware' => ['auth:sanctum', 'role:admin'],
@@ -16,7 +19,16 @@ return [
         'App\\Models\\User',
     ],
 
-    'channels' => ['mail', 'database', 'whatsapp'],
+    // Registered channel drivers, keyed by channel name. Each driver implements
+    // Xjoc\NotificationCenter\Contracts\NotificationChannel and renders its own
+    // template format. This map is the authoritative list of channels an admin
+    // may assign to a notification type. Add custom channels here (or register
+    // them on Xjoc\NotificationCenter\Channels\ChannelRegistry in a provider).
+    'channels' => [
+        'mail' => MailChannel::class,
+        'database' => DatabaseChannel::class,
+        'whatsapp' => WhatsappChannel::class,
+    ],
 
     'cache' => [
         'enabled' => true,
@@ -26,8 +38,9 @@ return [
     ],
 
     'templates' => [
-        'escape_html' => true,        // escape variable VALUES in html channels
-        'html_channels' => ['mail'],    // channels treated as HTML
+        // Whether the mail driver escapes variable VALUES (HTML). Other drivers
+        // decide their own escaping; the mail driver honors this flag.
+        'escape_html' => true,
         'on_missing_var' => 'empty',     // 'empty' | 'throw'
     ],
 
