@@ -5,13 +5,20 @@ declare(strict_types=1);
 namespace Xjoc\NotificationCenter\Concerns;
 
 use Illuminate\Notifications\Messages\MailMessage;
+use LogicException;
+use Xjoc\NotificationCenter\Channels\ChannelRegistry;
 use Xjoc\NotificationCenter\Enums\Channel;
 use Xjoc\NotificationCenter\Exceptions\MissingTemplateException;
 use Xjoc\NotificationCenter\Support\NotificationCenterCache;
+use Xjoc\NotificationCenter\Templates\ChannelTemplate;
 
 trait HasNotificationCenter
 {
-    /** @var array<string, array{subject: ?string, body: string}> */
+    /**
+     * Raw (un-rendered) templates injected by the gateway, keyed by channel.
+     *
+     * @var array<string, array{subject: ?string, body: string}>
+     */
     protected array $injectedTemplates = [];
 
     abstract public function notificationType(): string;
@@ -21,19 +28,17 @@ trait HasNotificationCenter
         $this->injectedTemplates[$channel] = ['subject' => $subject, 'body' => $rendered];
     }
 
-    /** @return array{subject: ?string, body: string}|null */
-    protected function injectedTemplate(string $channel): ?array
-    {
-        return $this->injectedTemplates[$channel] ?? null;
-    }
-
-    /** @return array<string, mixed> */
+    /**
+     * @return array<string, mixed>
+     */
     public function notificationVariables(object $notifiable): array
     {
         return [];
     }
 
-    /** @return array<int, string> */
+    /**
+     * @return array<int, string>
+     */
     public function via(object $notifiable): array
     {
         return app(NotificationCenterCache::class)->supportedChannels($this->notificationType());
@@ -41,26 +46,33 @@ trait HasNotificationCenter
 
     public function toMail(object $notifiable): MailMessage
     {
-        $template = $this->injectedTemplate(Channel::Mail->value)
-            ?? throw MissingTemplateException::forChannel($this->notificationType(), Channel::Mail->value);
+        $payload = $this->renderChannel(Channel::Mail->value, $notifiable);
 
-        $message = new MailMessage;
-
-        if ($template['subject'] !== null) {
-            $message->subject($template['subject']);
+        if (! $payload instanceof MailMessage) {
+            throw new LogicException('The [mail] channel driver must return a MailMessage instance.');
         }
 
-        return $message->line($template['body']);
+        return $payload;
     }
 
-    /** @return array{subject: ?string, body: string} */
+    /**
+     * @return array<string, mixed>
+     */
     public function toDatabase(object $notifiable): array
     {
-        return $this->injectedTemplate(Channel::Database->value)
-            ?? throw MissingTemplateException::forChannel($this->notificationType(), Channel::Database->value);
+        $payload = $this->renderChannel(Channel::Database->value, $notifiable);
+
+        if (! is_array($payload)) {
+            throw new LogicException('The [database] channel driver must return an array.');
+        }
+
+        /** @var array<string, mixed> $payload */
+        return $payload;
     }
 
-    /** @return array{subject: ?string, body: string} */
+    /**
+     * @return array<string, mixed>
+     */
     public function toArray(object $notifiable): array
     {
         return $this->toDatabase($notifiable);
@@ -68,9 +80,29 @@ trait HasNotificationCenter
 
     public function toWhatsapp(object $notifiable): string
     {
-        $template = $this->injectedTemplate(Channel::Whatsapp->value)
-            ?? throw MissingTemplateException::forChannel($this->notificationType(), Channel::Whatsapp->value);
+        $payload = $this->renderChannel(Channel::Whatsapp->value, $notifiable);
 
-        return $template['body'];
+        if (! is_string($payload)) {
+            throw new LogicException('The [whatsapp] channel driver must return a string.');
+        }
+
+        return $payload;
+    }
+
+    /**
+     * Resolve the channel driver and let it render the injected template. A
+     * developer who overrides a channel method (e.g. toMail) bypasses this
+     * entirely — their method wins and the injected template is ignored.
+     */
+    private function renderChannel(string $channel, object $notifiable): mixed
+    {
+        $template = $this->injectedTemplates[$channel]
+            ?? throw MissingTemplateException::forChannel($this->notificationType(), $channel);
+
+        return app(ChannelRegistry::class)->driver($channel)->render(
+            new ChannelTemplate($template['subject'], $template['body']),
+            $this->notificationVariables($notifiable),
+            $notifiable,
+        );
     }
 }

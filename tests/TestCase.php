@@ -10,6 +10,9 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Testing\PendingCommand;
 use Orchestra\Testbench\TestCase as Orchestra;
 use RuntimeException;
+use Xjoc\NotificationCenter\Channels\DatabaseChannel;
+use Xjoc\NotificationCenter\Channels\MailChannel;
+use Xjoc\NotificationCenter\Channels\WhatsappChannel;
 use Xjoc\NotificationCenter\Enums\Channel;
 use Xjoc\NotificationCenter\Enums\CreatedBy;
 use Xjoc\NotificationCenter\Enums\NotificationCategory;
@@ -66,7 +69,11 @@ abstract class TestCase extends Orchestra
             'prefix' => '',
         ]);
 
-        $app['config']->set('notification-center.channels', ['mail', 'database', 'whatsapp']);
+        $app['config']->set('notification-center.channels', [
+            'mail' => MailChannel::class,
+            'database' => DatabaseChannel::class,
+            'whatsapp' => WhatsappChannel::class,
+        ]);
         $app['config']->set('notification-center.user_model', User::class);
         $app['config']->set('notification-center.notifiable_models', [User::class]);
         $app['config']->set('notification-center.admin_middleware', []);
@@ -81,7 +88,6 @@ abstract class TestCase extends Orchestra
 
         $app['config']->set('notification-center.templates', [
             'escape_html' => true,
-            'html_channels' => ['mail'],
             'on_missing_var' => 'empty',
         ]);
     }

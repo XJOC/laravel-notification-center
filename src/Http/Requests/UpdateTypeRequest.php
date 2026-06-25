@@ -8,6 +8,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\In;
+use Xjoc\NotificationCenter\Channels\ChannelRegistry;
 use Xjoc\NotificationCenter\Models\NotificationType;
 
 final class UpdateTypeRequest extends FormRequest
@@ -59,13 +60,12 @@ final class UpdateTypeRequest extends FormRequest
     }
 
     /**
+     * The registered channel keys — the only channels an admin may assign.
+     *
      * @return array<int, string>
      */
     private function configuredChannels(): array
     {
-        /** @var array<int, string> $channels */
-        $channels = (array) config('notification-center.channels', []);
-
-        return $channels;
+        return app(ChannelRegistry::class)->keys();
     }
 }
