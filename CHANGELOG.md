@@ -4,6 +4,23 @@ All notable changes to `xjoc/laravel-notification-center` are documented here.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.0.1] - 2026-06-25
+
+### Fixed
+
+- **MySQL install/migration failure.** The `notification_user_preferences` morphs
+  index used an auto-generated name
+  (`notification_user_preferences_notifiable_type_notifiable_id_index`, 65 chars)
+  that exceeds MySQL's 64-character identifier limit, so
+  `notification-center:install` / `migrate` failed on MySQL. It now uses an
+  explicit short name (`nup_notifiable_index`).
+
+### Changed
+
+- CI now runs the full suite against **MySQL 8, MariaDB 11, and PostgreSQL 16**
+  in addition to SQLite, so database-portability issues such as identifier-length
+  limits are caught before release.
+
 ## [1.0.0] - 2026-06-25
 
 Initial stable release. A headless notification center built on top of Laravel's
@@ -45,4 +62,5 @@ native notification system — no coupling to any UI package.
 
 - PHP `^8.2`; Laravel 12 or 13 (`illuminate/contracts: ^12.0 || ^13.0`).
 
+[1.0.1]: https://github.com/XJOC/laravel-notification-center/releases/tag/v1.0.1
 [1.0.0]: https://github.com/xJOC/laravel-notification-center/releases/tag/v1.0.0

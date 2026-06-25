@@ -63,11 +63,7 @@ abstract class TestCase extends Orchestra
     protected function getEnvironmentSetUp($app): void
     {
         $app['config']->set('database.default', 'testing');
-        $app['config']->set('database.connections.testing', [
-            'driver' => 'sqlite',
-            'database' => ':memory:',
-            'prefix' => '',
-        ]);
+        $app['config']->set('database.connections.testing', $this->databaseConnectionConfig());
 
         $app['config']->set('notification-center.channels', [
             'mail' => MailChannel::class,
@@ -90,6 +86,62 @@ abstract class TestCase extends Orchestra
             'escape_html' => true,
             'on_missing_var' => 'empty',
         ]);
+    }
+
+    /**
+     * The test database connection. Defaults to in-memory SQLite; CI sets
+     * DB_CONNECTION=mysql|mariadb|pgsql (+ DB_* env) so the suite also runs
+     * against real MySQL, MariaDB and PostgreSQL, catching database-portability
+     * issues SQLite can't (e.g. the 64-char identifier-length limit on index
+     * names).
+     *
+     * @return array<string, mixed>
+     */
+    protected function databaseConnectionConfig(): array
+    {
+        $driver = $this->dbEnv('DB_CONNECTION', 'sqlite');
+
+        if ($driver === 'mysql' || $driver === 'mariadb') {
+            return [
+                'driver' => $driver,
+                'host' => $this->dbEnv('DB_HOST', '127.0.0.1'),
+                'port' => $this->dbEnv('DB_PORT', '3306'),
+                'database' => $this->dbEnv('DB_DATABASE', 'notification_center_test'),
+                'username' => $this->dbEnv('DB_USERNAME', 'root'),
+                'password' => $this->dbEnv('DB_PASSWORD', ''),
+                'charset' => 'utf8mb4',
+                'collation' => 'utf8mb4_unicode_ci',
+                'prefix' => '',
+            ];
+        }
+
+        if ($driver === 'pgsql') {
+            return [
+                'driver' => 'pgsql',
+                'host' => $this->dbEnv('DB_HOST', '127.0.0.1'),
+                'port' => $this->dbEnv('DB_PORT', '5432'),
+                'database' => $this->dbEnv('DB_DATABASE', 'notification_center_test'),
+                'username' => $this->dbEnv('DB_USERNAME', 'postgres'),
+                'password' => $this->dbEnv('DB_PASSWORD', ''),
+                'charset' => 'utf8',
+                'prefix' => '',
+                'search_path' => 'public',
+                'sslmode' => 'prefer',
+            ];
+        }
+
+        return [
+            'driver' => 'sqlite',
+            'database' => ':memory:',
+            'prefix' => '',
+        ];
+    }
+
+    private function dbEnv(string $key, string $default): string
+    {
+        $value = getenv($key);
+
+        return is_string($value) && $value !== '' ? $value : $default;
     }
 
     protected function defineDatabaseMigrations(): void

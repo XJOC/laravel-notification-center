@@ -12,7 +12,10 @@ return new class extends Migration
     {
         Schema::create('notification_user_preferences', function (Blueprint $table): void {
             $table->bigIncrements('id');
-            $table->morphs('notifiable');
+            // Explicit short index name: the auto-generated
+            // notification_user_preferences_notifiable_type_notifiable_id_index
+            // is 65 chars and exceeds MySQL's 64-char identifier limit.
+            $table->morphs('notifiable', 'nup_notifiable_index');
             $table->foreignId('notification_type_id')
                 ->constrained('notification_types')
                 ->cascadeOnDelete();
