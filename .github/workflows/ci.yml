@@ -157,8 +157,9 @@ jobs:
           MARIADB_ROOT_PASSWORD: root
         ports:
           - 3306:3306
+        # MariaDB images ship their own healthcheck.sh; mysqladmin is unreliable here.
         options: >-
-          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -proot"
+          --health-cmd="healthcheck.sh --connect --innodb_initialized"
           --health-interval=10s
           --health-timeout=5s
           --health-retries=10
