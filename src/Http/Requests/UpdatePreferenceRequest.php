@@ -34,7 +34,8 @@ final class UpdatePreferenceRequest extends FormRequest
                 return;
             }
 
-            $channel = (string) $this->route('channel');
+            $channel = $this->route('channel');
+            $channel = is_string($channel) ? $channel : '';
 
             if (! in_array($channel, $type->supported_channels, true)) {
                 $validator->errors()->add('channel', 'The given channel is not supported by this notification type.');

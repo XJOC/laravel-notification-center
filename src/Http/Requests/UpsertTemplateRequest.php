@@ -43,6 +43,8 @@ final class UpsertTemplateRequest extends FormRequest
 
     public function validatedChannel(): string
     {
-        return (string) $this->route('channel');
+        $channel = $this->route('channel');
+
+        return is_string($channel) ? $channel : '';
     }
 }
