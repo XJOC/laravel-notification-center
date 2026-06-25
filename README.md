@@ -81,6 +81,27 @@ in the **host** application, not in this package:
   (`WhatsappMessage::text($to, $body)`); richer kinds (file/location/buttons) are reserved
   and throw `UnsupportedWhatsappMessageException` until a future release.
 
+### Database tables this package creates
+
+The package migrations create five tables, all namespaced with the `notification_`
+prefix:
+
+| Table                            | Purpose                                                    |
+|----------------------------------|------------------------------------------------------------|
+| `notification_types`             | The notification types (coded + admin-created).            |
+| `notification_settings`          | Per-type, per-channel enabled state.                       |
+| `notification_templates`         | Per-type, per-channel subject/body templates.              |
+| `notification_user_preferences`  | Per-notifiable, per-(type, channel) opt-out state.         |
+| `notification_event_bindings`    | Event-class → type bindings for the event listener.        |
+
+These names are **not configurable** in v1, and the models run on your **default**
+database connection. Before installing, confirm your host app does not already own a
+table with one of these names (the most plausible overlaps are `notification_settings`
+and `notification_templates`). A per-package table prefix is intentionally **deferred**:
+adding it later defaults to today's names, so it is a backward-compatible addition, not
+a breaking change held back from v1. The package's own `notifications` table dependency
+(for the `database` channel) is the host's standard Laravel table, covered above.
+
 ## Low-touch integration (not zero-touch)
 
 There is no magic. To route one of your existing notifications through the center, do
