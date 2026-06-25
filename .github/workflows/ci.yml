@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    name: PHP ${{ matrix.php }} — Laravel ${{ matrix.laravel }} — ${{ matrix.dependency-version }}
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          # Highest resolvable dependencies
+          - laravel: 12
+            php: '8.2'
+            testbench: '10.*'
+            dependency-version: highest
+          - laravel: 12
+            php: '8.3'
+            testbench: '10.*'
+            dependency-version: highest
+          - laravel: 13
+            php: '8.3'
+            testbench: '11.*'
+            dependency-version: highest
+          - laravel: 13
+            php: '8.4'
+            testbench: '11.*'
+            dependency-version: highest
+          # Lowest resolvable dependencies — exercises the real floors of
+          # php ^8.2, illuminate/contracts ^12.0 and all dev dependencies.
+          - laravel: 12
+            php: '8.2'
+            testbench: '10.*'
+            dependency-version: lowest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, bcmath, intl
+          coverage: none
+
+      - name: Setup problem matchers
+        run: |
+          echo "::add-matcher::${{ runner.tool_cache }}/php.json"
+          echo "::add-matcher::${{ runner.tool_cache }}/phpunit.json"
+
+      - name: Install dependencies
+        run: |
+          composer require \
+            "orchestra/testbench:${{ matrix.testbench }}" \
+            --no-interaction --no-update
+          composer update \
+            ${{ matrix.dependency-version == 'lowest' && '--prefer-lowest --prefer-stable' || '' }} \
+            --prefer-dist --no-interaction --no-progress
+
+      - name: Check code style (Pint)
+        run: vendor/bin/pint --test
+
+      - name: Run static analysis (PHPStan)
+        run: vendor/bin/phpstan analyse --no-progress
+
+      - name: Run tests (Pest)
+        run: vendor/bin/pest
