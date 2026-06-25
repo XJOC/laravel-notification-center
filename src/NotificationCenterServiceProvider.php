@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Vendor\NotificationCenter;
+namespace Xjoc\NotificationCenter;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
