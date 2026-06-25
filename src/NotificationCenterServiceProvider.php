@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Xjoc\NotificationCenter;
 
+use Illuminate\Notifications\ChannelManager;
 use Illuminate\Notifications\Events\NotificationSending;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Schema;
@@ -11,8 +12,12 @@ use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use Throwable;
 use Xjoc\NotificationCenter\Channels\ChannelRegistry;
+use Xjoc\NotificationCenter\Channels\NullWhatsappTransport;
+use Xjoc\NotificationCenter\Channels\WhatsappChannel;
 use Xjoc\NotificationCenter\Commands\InstallCommand;
 use Xjoc\NotificationCenter\Commands\SyncCommand;
+use Xjoc\NotificationCenter\Contracts\WhatsappTransport;
+use Xjoc\NotificationCenter\Enums\Channel;
 use Xjoc\NotificationCenter\Listeners\EventBindingListener;
 use Xjoc\NotificationCenter\Listeners\NotificationGatewayListener;
 use Xjoc\NotificationCenter\Support\NotificationCenterCache;
@@ -59,11 +64,35 @@ final class NotificationCenterServiceProvider extends PackageServiceProvider
             'notification-center',
             fn ($app): NotificationCenterManager => $app->make(NotificationCenterManager::class),
         );
+
+        // WhatsApp delivery: bind the developer's transport (from config or a
+        // provider). Until one is configured, the Null transport throws a clear
+        // exception — the package ships no provider integration.
+        $this->app->bind(WhatsappTransport::class, function ($app): WhatsappTransport {
+            $transport = config('notification-center.whatsapp.transport');
+
+            if (is_string($transport) && $transport !== '') {
+                $resolved = $app->make($transport);
+
+                if ($resolved instanceof WhatsappTransport) {
+                    return $resolved;
+                }
+            }
+
+            return $app->make(NullWhatsappTransport::class);
+        });
     }
 
     public function packageBooted(): void
     {
         Event::listen(NotificationSending::class, [NotificationGatewayListener::class, 'handle']);
+
+        // Make the "whatsapp" channel deliverable: route it through WhatsappChannel,
+        // which renders the template and hands a WhatsappMessage to the transport.
+        $this->app->make(ChannelManager::class)->extend(
+            Channel::Whatsapp->value,
+            fn ($app): WhatsappChannel => $app->make(WhatsappChannel::class),
+        );
 
         try {
             if (Schema::hasTable('notification_event_bindings')) {

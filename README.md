@@ -70,11 +70,16 @@ in the **host** application, not in this package:
   php artisan migrate
   ```
 
-- **`whatsapp` channel** is **not** shipped with a driver. The center renders and
-  injects the WhatsApp template body (a plain string), but you must register a host
-  channel driver named `whatsapp` (via `Notification::extend('whatsapp', ...)`) that
-  knows how to actually deliver it. Without a driver, WhatsApp sends will fail at the
-  Laravel layer, not in this package.
+- **`whatsapp` channel** ships a driver (`WhatsappChannel`) that renders the template to
+  text and hands a structured `WhatsappMessage` to a `WhatsappTransport` you supply. The
+  package ships **no provider integration**: implement
+  `Xjoc\NotificationCenter\Contracts\WhatsappTransport` (one method,
+  `send(WhatsappMessage $message): void`) to map the message to your provider (Twilio,
+  Meta Cloud API, …) and register it via the `notification-center.whatsapp.transport`
+  config (FQCN) or by binding the interface in a service provider. Until you do, WhatsApp
+  delivery throws a clear `MissingWhatsappTransportException`. v1 supports **text** only
+  (`WhatsappMessage::text($to, $body)`); richer kinds (file/location/buttons) are reserved
+  and throw `UnsupportedWhatsappMessageException` until a future release.
 
 ## Low-touch integration (not zero-touch)
 
@@ -348,6 +353,7 @@ prefix: `notification-center.admin.`
 | `POST`   | `types/{type}/event-bindings`                | `types.event-bindings.store`  | Bind an event class to the type. `201`.                                |
 | `DELETE` | `event-bindings/{binding}`                   | `event-bindings.destroy`      | Remove a binding. `204`.                                               |
 | `GET`    | `settings`                                   | `settings.index`              | Overview of all types + their per-channel settings.                    |
+| `GET`    | `channels`                                   | `channels.index`              | Read-only list of registered channel keys (admin-pickable options). Never creates/modifies channels. |
 
 Dispatch request body shape:
 
@@ -412,8 +418,10 @@ keep the gateway cheap on the hot path. Behaviour:
 - **Mail is simplified.** The mail channel renders subject + body as a `MailMessage`
   with a single body line. There are **no action buttons** in v1; the rendered template
   body is the message body.
-- **WhatsApp needs a host driver.** This package renders/injects the WhatsApp body but
-  does not deliver it — register a `whatsapp` channel driver in your app.
+- **WhatsApp delivery is developer-supplied.** The package renders the WhatsApp text and
+  builds a structured `WhatsappMessage`, but ships **no** provider integration — bind your
+  own `WhatsappTransport` (via config or a provider). v1 is text-only; file/location/button
+  kinds are reserved and throw until a future release.
 - **Database channel needs the host's `notifications` table.** Run
   `php artisan notifications:table` and migrate.
 - **Event bindings register at boot.** Bindings created at runtime take effect on the
