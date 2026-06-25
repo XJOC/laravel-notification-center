@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Vendor\NotificationCenter\Tests;
+namespace Xjoc\NotificationCenter\Tests;
 
 use Illuminate\Foundation\Application;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Vendor\NotificationCenter\NotificationCenterServiceProvider;
+use Xjoc\NotificationCenter\NotificationCenterServiceProvider;
 
 abstract class TestCase extends Orchestra
 {

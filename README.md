@@ -14,7 +14,7 @@ leaving the presentation entirely up to you.
 ## Installation
 
 ```bash
-composer require vendor/laravel-notification-center
+composer require xjoc/laravel-notification-center
 ```
 
 The service provider is auto-discovered via package discovery.
