@@ -44,6 +44,14 @@ return [
         'on_missing_var' => 'empty',     // 'empty' | 'throw'
     ],
 
+    'whatsapp' => [
+        // Your implementation of Xjoc\NotificationCenter\Contracts\WhatsappTransport
+        // (FQCN), or bind the interface in a service provider. The package ships
+        // NO provider integration; until you configure a transport, WhatsApp
+        // delivery throws a clear exception.
+        'transport' => null,
+    ],
+
     // Tier-1 coded types synced to DB via notification-center:sync.
     'types' => [
         'order.confirmed' => [

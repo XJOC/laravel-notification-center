@@ -21,4 +21,9 @@ final class User extends Authenticatable
 
     /** @var string */
     protected $table = 'users';
+
+    public function routeNotificationForWhatsapp(mixed $notification = null): string
+    {
+        return '+15555550123';
+    }
 }
