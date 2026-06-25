@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Support\Facades\Route;
+use Xjoc\NotificationCenter\Http\Controllers\Admin\ChannelController;
 use Xjoc\NotificationCenter\Http\Controllers\Admin\DispatchController;
 use Xjoc\NotificationCenter\Http\Controllers\Admin\EventBindingController;
 use Xjoc\NotificationCenter\Http\Controllers\Admin\SettingController;
@@ -24,4 +25,7 @@ Route::prefix(config('notification-center.route_prefix').'/admin')
         Route::post('types/{type}/event-bindings', [EventBindingController::class, 'store'])->name('types.event-bindings.store');
         Route::delete('event-bindings/{binding}', [EventBindingController::class, 'destroy'])->name('event-bindings.destroy');
         Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
+
+        // Read-only: the registered channel keys an admin may assign to a type.
+        Route::get('channels', [ChannelController::class, 'index'])->name('channels.index');
     });
